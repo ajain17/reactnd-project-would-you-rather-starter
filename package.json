@@ -1,0 +1,31 @@
+{
+  "name": "WouldYouRather",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-icons": "^3.5.0",
+    "react-redux": "^6.0.1",
+    "react-redux-loading": "^1.0.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "1.1.1",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
+    "office-ui-fabric-react": "^6.157.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ajain17/reactnd-project-would-you-rather-starter.git"
+  },
+  "devDependencies": {
+    "office-ui-fabric-react": "^6.157.0"
+  }
+}
