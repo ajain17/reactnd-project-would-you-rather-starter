@@ -10,10 +10,6 @@ class App extends Component {
     this.props.handleInitialData();
   }
 
-  componentDidUpdate() {
-    console.log(this.props.users);
-  }
-
   render() {
     return (
       <Router>

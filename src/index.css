@@ -99,7 +99,6 @@ li {
   justify-content: center;
   font-weight: bolder;
   font-size: large;
-  border: 2px inset darkgray;
 }
 
 .persona,
@@ -113,5 +112,17 @@ li {
 
 .view {
   display: flex;
-  direction: column;
+  justify-content: center;
+}
+
+.sections {
+  display: flex;
+  width: auto;
+}
+
+.sections > * {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 2px;
 }
