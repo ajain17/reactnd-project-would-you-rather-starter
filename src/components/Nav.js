@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { NavLink, Route, Switch, withRouter } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import { setLoggedInUser } from "../actions/authedUser";
 
 class Navigation extends Component {

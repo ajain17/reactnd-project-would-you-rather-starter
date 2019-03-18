@@ -17,13 +17,6 @@ class SignIn extends Component {
     });
     return options;
   };
-  componentDidMount() {
-    console.log("mount", this.props);
-  }
-
-  componentDidUpdate() {
-    console.log("update", this.props.match);
-  }
 
   render() {
     return (
