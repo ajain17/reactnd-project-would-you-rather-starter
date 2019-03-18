@@ -16,11 +16,11 @@ class App extends Component {
         <React.Fragment>
           <div className="app">
             <div className="flex center column">
-              {!isEmpty(this.props.users) && !this.props.loggedInUser && (
+              {!isEmpty(this.props.users) && !this.props.authedUser && (
                 <SignIn />
               )}
             </div>
-            {this.props.loggedInUser ? <Dashboard /> : null}
+            {this.props.authedUser ? <Dashboard /> : null}
           </div>
         </React.Fragment>
       </Router>
@@ -36,9 +36,9 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-function mapStateToProps({ loggedInUser, users }) {
+function mapStateToProps({ authedUser, users }) {
   return {
-    loggedInUser: loggedInUser,
+    authedUser: authedUser,
     users: users
   };
 }

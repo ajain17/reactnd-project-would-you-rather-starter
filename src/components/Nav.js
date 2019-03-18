@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { NavLink, Route, Switch, withRouter } from "react-router-dom";
-import { setLoggedInUser } from "../actions/loggedInUser";
+import { setLoggedInUser } from "../actions/authedUser";
 import Home from "./Home";
 import Leaderboard from "./Leaderboard";
 import Poll from "./Poll";

@@ -73,7 +73,7 @@ export class Home extends Component {
     let unanswered = [];
     Object.entries(this.props.questions).forEach(q => {
       let votes = [...q[1].optionOne.votes, ...q[1].optionTwo.votes];
-      if (!votes.includes(this.props.loggedInUser)) {
+      if (!votes.includes(this.props.authedUser)) {
         unanswered.push(q);
       } else {
         answered.push(q);
@@ -84,9 +84,9 @@ export class Home extends Component {
   };
 }
 
-function mapStateToProps({ loggedInUser, questions, users }) {
+function mapStateToProps({ authedUser, questions, users }) {
   return {
-    loggedInUser: loggedInUser,
+    authedUser: authedUser,
     questions: questions,
     users: users
   };

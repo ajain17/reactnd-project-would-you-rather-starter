@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { ChoiceGroup } from "office-ui-fabric-react/lib/ChoiceGroup";
 import { PrimaryButton } from "office-ui-fabric-react";
-export class Poll extends Component {
+import { handleSaveAnswer } from "../actions/questions";
+class Poll extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,7 +24,6 @@ export class Poll extends Component {
   }
 
   render() {
-    console.log("route", this.props.match);
     let ques = this.state.question;
     return (
       <div className="poll">
@@ -34,17 +34,18 @@ export class Poll extends Component {
             <ChoiceGroup
               options={[
                 {
-                  key: "A",
+                  key: "optionOne",
                   text: ques.optionOne.text
                 },
                 {
-                  key: "B",
+                  key: "optionTwo",
                   text: ques.optionTwo.text
                 }
               ]}
               onChange={this._onChange}
               label="Would you Rather?"
             />
+            <hr />
             <PrimaryButton
               disabled={!this.state.answer}
               text="Submit"
@@ -58,25 +59,27 @@ export class Poll extends Component {
 
   _onChange = (ev, option) => {
     console.log("chosen", option);
-    this.setState({ answer: option.text });
+    this.setState({ answer: option.key });
   };
 
   _saveAnswer = () => {
-    console.log("save", this.state.answer);
+    console.log("save", this.state.answer, this.state.question.id);
+    this.props.dispatch(
+      handleSaveAnswer({
+        authedUser: this.props.authedUser,
+        qid: this.state.question.id,
+        answer: this.state.answer
+      })
+    );
   };
 }
 
-function mapStateToProps({ loggedInUser, questions, users }) {
+function mapStateToProps({ authedUser, questions, users }) {
   return {
-    loggedInUser: loggedInUser,
+    authedUser: authedUser,
     questions: questions,
     users: users
   };
 }
 
-const mapDispatchToProps = {};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Poll);
+export default connect(mapStateToProps)(Poll);

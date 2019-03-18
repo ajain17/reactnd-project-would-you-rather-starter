@@ -1,7 +1,8 @@
 import { hideLoading, showLoading } from "react-redux-loading";
-import { saveQuestion } from "../utils/api";
+import { saveQuestion, saveQuestionAnswer } from "../utils/api";
 export const GET_QUESTIONS = "GET_QUESTIONS";
 export const ADD_QUESTION = "ADD_QUESTION";
+export const UPDATE_QUESTION = "UPDATE_QUESTION";
 
 export function getAllQuestions(questions) {
   return {
@@ -17,15 +18,31 @@ function addQuestion(question) {
   };
 }
 
+function updateQuestion({ authedUser, qid, answer }) {
+  return {
+    type: UPDATE_QUESTION,
+    authedUser,
+    qid,
+    answer
+  };
+}
+
 export function handleAddQuestion(question) {
   return (dispatch, getState) => {
-    const { loggedInUser } = getState();
-    //modify question object here
     dispatch(showLoading());
     return saveQuestion({
       question
     })
       .then(question => dispatch(addQuestion(question)))
+      .then(() => dispatch(hideLoading()));
+  };
+}
+
+export function handleSaveAnswer(info) {
+  return (dispatch, getState) => {
+    dispatch(showLoading());
+    return saveQuestionAnswer(info)
+      .then(() => dispatch(updateQuestion(info)))
       .then(() => dispatch(hideLoading()));
   };
 }

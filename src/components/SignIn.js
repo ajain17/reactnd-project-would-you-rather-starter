@@ -3,10 +3,10 @@ import { Dropdown } from "office-ui-fabric-react/lib/Dropdown";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { setLoggedInUser } from "../actions/loggedInUser";
+import { setLoggedInUser } from "../actions/authedUser";
 class SignIn extends Component {
   state = {
-    loggedInUser: null,
+    authedUser: null,
     toHome: false
   };
 
@@ -33,7 +33,7 @@ class SignIn extends Component {
             required={true}
           />
           <PrimaryButton
-            disabled={!this.state.loggedInUser}
+            disabled={!this.state.authedUser}
             onClick={this.saveUser}
           >
             <p>Login</p>
@@ -45,13 +45,13 @@ class SignIn extends Component {
 
   saveUser = () => {
     const { dispatch } = this.props;
-    const { loggedInUser } = this.state;
-    dispatch(setLoggedInUser(loggedInUser));
+    const { authedUser } = this.state;
+    dispatch(setLoggedInUser(authedUser));
     this.props.history.push("/home");
   };
 
   changeState = (event, item) => {
-    this.setState({ loggedInUser: item.key });
+    this.setState({ authedUser: item.key });
   };
 }
 

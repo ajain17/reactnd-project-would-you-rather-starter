@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "deepcopy": "^2.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-icons": "^3.5.0",
@@ -26,6 +27,7 @@
     "url": "https://github.com/ajain17/reactnd-project-would-you-rather-starter.git"
   },
   "devDependencies": {
+    "deepcopy": "^2.0.0",
     "office-ui-fabric-react": "^6.157.0"
   }
 }
