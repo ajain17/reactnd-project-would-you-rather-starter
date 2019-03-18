@@ -3,23 +3,43 @@ import { connect } from "react-redux";
 import { ChoiceGroup } from "office-ui-fabric-react/lib/ChoiceGroup";
 import { PrimaryButton } from "office-ui-fabric-react";
 import { handleSaveAnswer } from "../actions/questions";
+import PollResults from "./PollResults";
 class Poll extends Component {
   constructor(props) {
     super(props);
     this.state = {
       answer: null,
-      question: null
+      question: null,
+      isDisabled: false,
+      showResults: false
     };
   }
 
   componentDidMount() {
+    this.initialize();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.questions && this.props.questions !== prevProps.questions) {
+      this.initialize();
+    }
+  }
+
+  initialize = () => {
     let questionId = this.props.match.params
       ? this.props.match.params.question
       : "";
 
     let question = this.props.questions.find(q => q.id === questionId);
-    if (question) this.setState({ question });
-  }
+    if (question) {
+      this.setState({ question });
+    }
+
+    let votes = [...question.optionOne.votes, ...question.optionTwo.votes];
+    if (votes.includes(this.props.authedUser)) {
+      this.setState({ isDisabled: true });
+    }
+  };
 
   render() {
     let ques = this.state.question;
@@ -29,27 +49,38 @@ class Poll extends Component {
           <React.Fragment>
             <h2>{ques.author} asks:</h2>
             <h1>Would you rather....</h1>
-            <ChoiceGroup
-              options={[
-                {
-                  key: "optionOne",
-                  text: ques.optionOne.text
-                },
-                {
-                  key: "optionTwo",
-                  text: ques.optionTwo.text
-                }
-              ]}
-              onChange={this._onChange}
-              label="Would you Rather?"
-            />
-            <hr />
+            <div className="choice-group">
+              <ChoiceGroup
+                options={[
+                  {
+                    key: "optionOne",
+                    text: ques.optionOne.text,
+                    disabled: this.state.isDisabled
+                  },
+                  {
+                    key: "optionTwo",
+                    text: ques.optionTwo.text,
+                    disabled: this.state.isDisabled
+                  }
+                ]}
+                onChange={this._onChange}
+                label="Would you Rather?"
+              />
+            </div>
             <PrimaryButton
-              disabled={!this.state.answer}
+              className="answer-button"
+              disabled={this.state.isDisabled}
               text="Submit"
               onClick={this._saveAnswer}
             />
           </React.Fragment>
+        )}
+
+        {this.state.isDisabled && (
+          <div>
+            <hr />
+            <PollResults question={this.state.question} />
+          </div>
         )}
       </div>
     );

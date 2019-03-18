@@ -24,7 +24,9 @@ html {
   align-self: center;
 }
 
-.login > * {
+.login > *,
+.choice-group,
+.poll-results {
   padding: 15px;
 }
 
@@ -138,4 +140,11 @@ li {
 
 .question a {
   color: white;
+}
+
+.poll-results {
+  background: black;
+  color: white;
+  width: max-content;
+  margin-top: 30px;
 }
