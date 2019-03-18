@@ -15,7 +15,7 @@ class App extends Component {
       <Router>
         <React.Fragment>
           <div className="app">
-            <div className="sign-in-box">
+            <div className="flex center column">
               {!isEmpty(this.props.users) && !this.props.loggedInUser && (
                 <SignIn />
               )}

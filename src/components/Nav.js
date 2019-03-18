@@ -4,14 +4,15 @@ import { NavLink, Route, Switch, withRouter } from "react-router-dom";
 import { setLoggedInUser } from "../actions/loggedInUser";
 import Home from "./Home";
 import Leaderboard from "./Leaderboard";
+import Poll from "./Poll";
 import NewQuestion from "./NewQuestion";
 class Navigation extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="nav-items">
-          <nav className="nav">
-            <ul>
+        <div className="nav-items flex large bolder">
+          <nav className="nav flex center">
+            <ul className="flex">
               <li>
                 <NavLink to="/home" activeClassName="active">
                   Home
@@ -40,6 +41,7 @@ class Navigation extends Component {
           <Route path="/home" component={Home} />
           <Route path="/newquestion" component={NewQuestion} />
           <Route path="/leaderboard" component={Leaderboard} />
+          <Route path="/poll/:question" component={Poll} />
         </Switch>
       </React.Fragment>
     );
@@ -47,8 +49,8 @@ class Navigation extends Component {
 
   logout = () => {
     const { dispatch } = this.props;
-    dispatch(setLoggedInUser(null));
     this.props.history.push("/");
+    dispatch(setLoggedInUser(null));
   };
 }
 export default withRouter(connect()(Navigation));

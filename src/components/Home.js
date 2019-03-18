@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Navigation from "./Nav";
-import { isEmpty } from "../utils/helper";
+import AnsweredQuestion from "./AnsweredQuestion";
+import UnansweredQuestion from "./UnansweredQuestion";
 export class Home extends Component {
   state = {
     answered: null,
-    unanswered: null
+    unanswered: null,
+    showAnswered: false,
+    showUnanswered: true
   };
   componentDidMount() {
     this.setQuestions();
@@ -16,19 +18,55 @@ export class Home extends Component {
     }
   }
   render() {
+    let { answered, unanswered } = this.state;
     return (
-      <div className="view">
-        <div className="sections">
-          <div className="unanswered">
-            <h1>Unanswered Questions</h1>
-          </div>
-          <div className="answered">
-            <h1>Answered Questions</h1>
-          </div>
+      <div className="container flex center">
+        <div className="sections flex">
+          <h1
+            onClick={this.showUnanswered}
+            className={this.state.showUnanswered ? "active" : ""}
+          >
+            Unanswered Questions
+          </h1>
+          <h1
+            onClick={this.showAnswered}
+            className={!this.state.showUnanswered ? "active" : ""}
+          >
+            Answered Questions
+          </h1>
+        </div>
+        <div className="sections section-content flex">
+          {this.state.showAnswered ? (
+            <ul>
+              {answered &&
+                answered.map(q => (
+                  <li key={q[0]}>
+                    <AnsweredQuestion question={q} />
+                  </li>
+                ))}
+            </ul>
+          ) : (
+            <ul>
+              {unanswered &&
+                unanswered.map(q => (
+                  <li key={q[0]}>
+                    <UnansweredQuestion question={q} />
+                  </li>
+                ))}
+            </ul>
+          )}
         </div>
       </div>
     );
   }
+
+  showAnswered = () => {
+    this.setState({ showAnswered: true, showUnanswered: false });
+  };
+
+  showUnanswered = () => {
+    this.setState({ showAnswered: false, showUnanswered: true });
+  };
 
   setQuestions = () => {
     let answered = [];
