@@ -26,7 +26,8 @@ html {
 
 .login > *,
 .choice-group,
-.poll-results {
+.poll-results,
+.question-tile {
   padding: 15px;
 }
 
@@ -77,6 +78,10 @@ li {
   justify-content: center;
 }
 
+.wrap {
+  flex-wrap: wrap;
+}
+
 .column {
   flex-flow: column;
 }
@@ -121,10 +126,6 @@ li {
   text-decoration: underline;
 }
 
-/* .sections :first-child {
-  border-right: 1px solid black;
-} */
-
 .question {
   background: darkslateblue;
   padding: 5px;
@@ -148,4 +149,27 @@ li {
   color: white;
   width: max-content;
   margin-top: 30px;
+}
+
+.poll-results h2 {
+  font-style: italic;
+  text-decoration: underline;
+}
+
+.leaderboard table {
+  border-collapse: collapse;
+}
+
+.leaderboard,
+.leaderboard-container h1 {
+  text-align: center;
+}
+
+.leaderboard table,
+th,
+td {
+  border: 1px solid black;
+  padding: 10px;
+  background: darkslateblue;
+  color: white;
 }

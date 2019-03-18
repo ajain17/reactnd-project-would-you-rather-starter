@@ -14,14 +14,14 @@ class PollResults extends Component {
             <h1>Poll Results: </h1>
 
             <div className="option">
-              {ques.optionOne.text}
+              <h2>{ques.optionOne.text}</h2>
               <p>
                 {ques.optionOne.votes.length} / {totalVotes} People voted :
                 {(ques.optionOne.votes.length * 100) / totalVotes}%
               </p>
             </div>
             <div className="option">
-              {ques.optionTwo.text}
+              <h2> {ques.optionTwo.text}</h2>
               <p>
                 {ques.optionTwo.votes.length} / {totalVotes} People voted :
                 {(ques.optionTwo.votes.length * 100) / totalVotes}%

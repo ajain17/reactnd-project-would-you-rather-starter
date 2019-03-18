@@ -1,5 +1,7 @@
 import { hideLoading, showLoading } from "react-redux-loading";
 import { saveQuestion, saveQuestionAnswer } from "../utils/api";
+import { updateUsers } from "./users";
+
 export const GET_QUESTIONS = "GET_QUESTIONS";
 export const ADD_QUESTION = "ADD_QUESTION";
 export const UPDATE_QUESTION = "UPDATE_QUESTION";
@@ -43,6 +45,7 @@ export function handleSaveAnswer(info) {
     dispatch(showLoading());
     return saveQuestionAnswer(info)
       .then(() => dispatch(updateQuestion(info)))
+      .then(() => dispatch(updateUsers(info)))
       .then(() => dispatch(hideLoading()));
   };
 }

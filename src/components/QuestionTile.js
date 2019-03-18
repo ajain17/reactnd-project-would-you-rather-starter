@@ -5,10 +5,10 @@ export default class QuestionTile extends Component {
   render() {
     let questions = this.props.questions;
     return (
-      <ul>
+      <div className="question-list flex center wrap">
         {questions &&
           questions.map(ques => (
-            <li key={ques.id}>
+            <div className="question-tile" key={ques.id}>
               <div className="question">
                 <h2>{ques.author} Asks: </h2>
                 <hr />
@@ -21,14 +21,16 @@ export default class QuestionTile extends Component {
                 </div>
                 <hr />
                 <Link
-                  to={{ pathname: `/poll/${ques.id}/${this.props.answered}` }}
+                  to={{
+                    pathname: `/question/${ques.id}/${this.props.answered}`
+                  }}
                 >
                   View Poll >
                 </Link>
               </div>
-            </li>
+            </div>
           ))}
-      </ul>
+      </div>
     );
   }
 }
