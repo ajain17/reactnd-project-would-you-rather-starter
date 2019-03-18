@@ -1,4 +1,8 @@
-import { GET_QUESTIONS, UPDATE_QUESTION } from "../actions/questions";
+import {
+  ADD_QUESTION,
+  GET_QUESTIONS,
+  UPDATE_QUESTION
+} from "../actions/questions";
 const deepcopy = require("deepcopy");
 export default function questions(state = {}, action) {
   switch (action.type) {
@@ -23,6 +27,9 @@ export default function questions(state = {}, action) {
         ...state.slice(questionIndex + 1)
       ];
       return result;
+
+    case ADD_QUESTION:
+      return [...state, action.question];
     default:
       return state;
   }

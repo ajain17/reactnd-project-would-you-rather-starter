@@ -30,18 +30,19 @@ function updateQuestion({ authedUser, qid, answer }) {
 }
 
 export function handleAddQuestion(question) {
-  return (dispatch, getState) => {
+  return dispatch => {
     dispatch(showLoading());
-    return saveQuestion({
-      question
-    })
-      .then(question => dispatch(addQuestion(question)))
+    return saveQuestion(question)
+      .then(response => {
+        console.log(response);
+        dispatch(addQuestion(response));
+      })
       .then(() => dispatch(hideLoading()));
   };
 }
 
 export function handleSaveAnswer(info) {
-  return (dispatch, getState) => {
+  return dispatch => {
     dispatch(showLoading());
     return saveQuestionAnswer(info)
       .then(() => dispatch(updateQuestion(info)))

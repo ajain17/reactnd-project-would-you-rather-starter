@@ -28,10 +28,12 @@ class PollResults extends Component {
               </p>
             </div>
             <div className="option">
-              <h2> {ques.optionTwo.text}</h2>
-              {ques.optionTwo.votes.includes(user) && (
-                <i class="fas fa-check-circle" />
-              )}
+              <h2>
+                {ques.optionTwo.text}
+                {ques.optionTwo.votes.includes(user) && (
+                  <i class="fas fa-check-circle" />
+                )}
+              </h2>
               <p>
                 {ques.optionTwo.votes.length} / {totalVotes} People voted :
                 {(ques.optionTwo.votes.length * 100) / totalVotes}%

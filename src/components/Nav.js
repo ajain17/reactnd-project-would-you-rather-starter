@@ -13,7 +13,7 @@ class Navigation extends Component {
       <React.Fragment>
         <div className="nav-items flex large bolder">
           <div className="persona">
-            <img src={this.props.imageUrl} alt="ProfileImage" /> Hello
+            <img src={this.props.imageUrl} alt="ProfileImage" /> Hello{" "}
             {this.props.userName}
           </div>
 
@@ -25,7 +25,7 @@ class Navigation extends Component {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/newquestion" activeClassName="active">
+                <NavLink to="/add" activeClassName="active">
                   New Question
                 </NavLink>
               </li>
@@ -43,7 +43,7 @@ class Navigation extends Component {
         </div>
         <Switch>
           <Route path="/home" component={Home} />
-          <Route path="/newquestion" component={NewQuestion} />
+          <Route path="/add" component={NewQuestion} />
           <Route path="/leaderboard" component={Leaderboard} />
           <Route path="/question/:question/:answered" component={Poll} />
           <Route component={NotFound} />

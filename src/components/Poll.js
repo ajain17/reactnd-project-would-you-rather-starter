@@ -75,7 +75,7 @@ class Poll extends Component {
 
             {!this.state.isDisabled && (
               <PrimaryButton
-                className="answer-button"
+                className="submit-button"
                 text="Submit"
                 onClick={this._saveAnswer}
               />
