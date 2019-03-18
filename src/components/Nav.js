@@ -11,6 +11,11 @@ class Navigation extends Component {
     return (
       <React.Fragment>
         <div className="nav-items flex large bolder">
+          <div className="persona">
+            <img src={this.props.imageUrl} alt="ProfileImage" /> Hello
+            {this.props.userName}
+          </div>
+
           <nav className="nav flex center">
             <ul className="flex">
               <li>
@@ -30,12 +35,10 @@ class Navigation extends Component {
               </li>
             </ul>
           </nav>
-          <div className="username">
-            <div className="persona">Hello {this.props.userName}</div>
-            <p className="logout" onClick={this.logout}>
-              Logout
-            </p>
-          </div>
+
+          <p className="logout" onClick={this.logout}>
+            Logout
+          </p>
         </div>
         <Switch>
           <Route path="/home" component={Home} />

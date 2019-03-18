@@ -96,7 +96,6 @@ li {
 
 .nav-items {
   width: 100%;
-  justify-content: flex-end;
 }
 
 .nav {
@@ -172,4 +171,9 @@ td {
   padding: 10px;
   background: darkslateblue;
   color: white;
+}
+
+img {
+  width: 50px;
+  height: 50px;
 }

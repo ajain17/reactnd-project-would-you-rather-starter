@@ -7,16 +7,23 @@ class Dashboard extends Component {
     return (
       <React.Fragment>
         <Router>
-          <Navigation userName={this.props.authedUser} />
+          <Navigation
+            userName={this.props.authedUser}
+            imageUrl={
+              this.props.users.find(u => u.id === this.props.authedUser)
+                .avatarURL
+            }
+          />
         </Router>
       </React.Fragment>
     );
   }
 }
 
-function mapStateToProps({ authedUser }) {
+function mapStateToProps({ authedUser, users }) {
   return {
-    authedUser: authedUser
+    authedUser: authedUser,
+    users: users
   };
 }
 

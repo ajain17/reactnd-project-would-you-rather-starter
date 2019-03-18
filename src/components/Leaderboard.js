@@ -23,21 +23,9 @@ export class Leaderboard extends Component {
     users.sort((a, b) => {
       let aTotal = a.questions.length + Object.keys(a.answers).length;
       let bTotal = b.questions.length + Object.keys(b.answers).length;
-      console.log(
-        a.name,
-        "  ",
-        aTotal,
-        "   ",
-
-        b.name,
-        "  ",
-        bTotal
-      );
-
       return aTotal < bTotal ? 1 : -1;
     });
 
-    console.log("users", users);
     return users;
   }
 
@@ -59,7 +47,9 @@ export class Leaderboard extends Component {
                 this.state.users.map(user => (
                   <tr key={user.id}>
                     <td> {user.name}</td>
-                    <td> {user.id}</td>
+                    <td>
+                      <img src={user.avatarURL} alt="ProfileImage" />
+                    </td>
                     <td> {user.questions.length}</td>
                     <td> {Object.keys(user.answers).length}</td>
                   </tr>
@@ -70,10 +60,6 @@ export class Leaderboard extends Component {
       </div>
     );
   }
-
-  getQuestionsAskedByUser = user => {
-    return;
-  };
 }
 
 function mapStateToProps({ questions, users }) {
