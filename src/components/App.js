@@ -16,9 +16,9 @@ class App extends Component {
         <React.Fragment>
           <div className="app">
             <div className="flex center column">
-              {!isEmpty(this.props.users) && !this.props.authedUser && (
-                <SignIn />
-              )}
+              {this.props.users &&
+                this.props.users.length > 0 &&
+                !this.props.authedUser && <SignIn />}
             </div>
             {this.props.authedUser ? <Dashboard /> : null}
           </div>

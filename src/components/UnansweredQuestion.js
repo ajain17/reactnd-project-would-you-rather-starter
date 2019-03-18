@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 class UnansweredQuestion extends Component {
   render() {
-    let ques = this.props.question[1];
+    let ques = this.props.question;
     return (
       <div className="question">
         <h2>{ques.author} Asks: </h2>

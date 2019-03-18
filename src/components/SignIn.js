@@ -12,8 +12,8 @@ class SignIn extends Component {
 
   getOptions = () => {
     let options = [];
-    Object.entries(this.props.users).forEach(user => {
-      options.push({ key: user[0], text: user[1]["name"] });
+    this.props.users.forEach(user => {
+      options.push({ key: user.id, text: user.name });
     });
     return options;
   };

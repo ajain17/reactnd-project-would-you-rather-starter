@@ -14,11 +14,9 @@ class Dashboard extends Component {
   }
 }
 
-function mapStateToProps({ authedUser, questions, users }) {
+function mapStateToProps({ authedUser }) {
   return {
-    authedUser: authedUser,
-    questions: questions,
-    users: users
+    authedUser: authedUser
   };
 }
 

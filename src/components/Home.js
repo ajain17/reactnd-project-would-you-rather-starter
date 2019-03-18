@@ -40,7 +40,7 @@ export class Home extends Component {
             <ul>
               {answered &&
                 answered.map(q => (
-                  <li key={q[0]}>
+                  <li key={q.id}>
                     <AnsweredQuestion question={q} />
                   </li>
                 ))}
@@ -49,7 +49,7 @@ export class Home extends Component {
             <ul>
               {unanswered &&
                 unanswered.map(q => (
-                  <li key={q[0]}>
+                  <li key={q.id}>
                     <UnansweredQuestion question={q} />
                   </li>
                 ))}
@@ -71,8 +71,8 @@ export class Home extends Component {
   setQuestions = () => {
     let answered = [];
     let unanswered = [];
-    Object.entries(this.props.questions).forEach(q => {
-      let votes = [...q[1].optionOne.votes, ...q[1].optionTwo.votes];
+    this.props.questions.forEach(q => {
+      let votes = [...q.optionOne.votes, ...q.optionTwo.votes];
       if (!votes.includes(this.props.authedUser)) {
         unanswered.push(q);
       } else {

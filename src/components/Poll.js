@@ -13,14 +13,12 @@ class Poll extends Component {
   }
 
   componentDidMount() {
-    console.log("mounted");
     let questionId = this.props.match.params
       ? this.props.match.params.question
       : "";
 
-    if (this.props.questions[questionId] !== null) {
-      this.setState({ question: this.props.questions[questionId] });
-    }
+    let question = this.props.questions.find(q => q.id === questionId);
+    if (question) this.setState({ question });
   }
 
   render() {
@@ -58,7 +56,6 @@ class Poll extends Component {
   }
 
   _onChange = (ev, option) => {
-    console.log("chosen", option);
     this.setState({ answer: option.key });
   };
 

@@ -3,22 +3,26 @@ const deepcopy = require("deepcopy");
 export default function questions(state = {}, action) {
   switch (action.type) {
     case GET_QUESTIONS:
-      return {
-        ...state,
-        ...action.questions
-      };
+      let questions = Object.keys(action.questions).map(
+        key => action.questions[key]
+      );
+
+      return questions;
     case UPDATE_QUESTION:
-      let stateCopy = deepcopy(state);
-      let question = stateCopy[action.qid];
+      let questionIndex = state.findIndex(q => q.id === action.qid);
+
+      let question = deepcopy(state[questionIndex]);
+
       if (!question[action.answer].votes.includes(action.authedUser)) {
         question[action.answer].votes.push(action.authedUser);
       }
-      delete stateCopy[action.qid];
-      stateCopy[action.qid] = question;
 
-      return {
-        ...stateCopy
-      };
+      let result = [
+        ...state.slice(0, questionIndex),
+        question,
+        ...state.slice(questionIndex + 1)
+      ];
+      return result;
     default:
       return state;
   }
