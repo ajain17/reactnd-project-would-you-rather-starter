@@ -139,14 +139,14 @@ let questions = {
       text: "have horrible short term memory"
     },
     optionTwo: {
-      votes: ["sarahedo"],
+      votes: [],
       text: "have horrible long term memory"
     }
   },
   "6ni6ok3ym7mf1p33lnez": {
     id: "6ni6ok3ym7mf1p33lnez",
     author: "johndoe",
-    timestamp: 1468479767190,
+    timestamp: 1568479767190,
     optionOne: {
       votes: [],
       text: "become a superhero"

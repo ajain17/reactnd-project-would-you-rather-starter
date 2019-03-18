@@ -11,7 +11,8 @@ class Poll extends Component {
       answer: null,
       question: null,
       isDisabled: false,
-      showResults: false
+      showResults: false,
+      defaultSelected: null
     };
   }
 
@@ -37,9 +38,15 @@ class Poll extends Component {
 
     let votes = [...question.optionOne.votes, ...question.optionTwo.votes];
     if (votes.includes(this.props.authedUser)) {
+      question.optionOne.votes.includes(this.props.authedUser)
+        ? this.setState({ defaultSelected: "optionOne" })
+        : this.setState({ defaultSelected: "optionTwo" });
+
       this.setState({ isDisabled: true });
     }
   };
+
+  getUserSelection = () => {};
 
   render() {
     let ques = this.state.question;
@@ -51,6 +58,7 @@ class Poll extends Component {
             <h1>Would you rather....</h1>
             <div className="choice-group">
               <ChoiceGroup
+                defaultSelectedKey={this.state.defaultSelected}
                 options={[
                   {
                     key: "optionOne",

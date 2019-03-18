@@ -130,6 +130,7 @@ li {
   padding: 5px;
   color: white;
   border-radius: 5px;
+  width: 250px;
 }
 
 .question button {

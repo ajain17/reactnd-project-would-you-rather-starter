@@ -41,7 +41,7 @@ class Navigation extends Component {
           <Route path="/home" component={Home} />
           <Route path="/newquestion" component={NewQuestion} />
           <Route path="/leaderboard" component={Leaderboard} />
-          <Route path="/poll/:question" component={Poll} />
+          <Route path="/poll/:question/:answered" component={Poll} />
         </Switch>
       </React.Fragment>
     );

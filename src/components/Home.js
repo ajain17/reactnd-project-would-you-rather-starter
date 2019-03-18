@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import AnsweredQuestion from "./AnsweredQuestion";
-import UnansweredQuestion from "./UnansweredQuestion";
+import QuestionTile from "./QuestionTile";
+
 export class Home extends Component {
   state = {
     answered: null,
@@ -36,25 +36,14 @@ export class Home extends Component {
           </h1>
         </div>
         <div className="sections section-content flex">
-          {this.state.showAnswered ? (
-            <ul>
-              {answered &&
-                answered.map(q => (
-                  <li key={q.id}>
-                    <AnsweredQuestion question={q} />
-                  </li>
-                ))}
-            </ul>
-          ) : (
-            <ul>
-              {unanswered &&
-                unanswered.map(q => (
-                  <li key={q.id}>
-                    <UnansweredQuestion question={q} />
-                  </li>
-                ))}
-            </ul>
-          )}
+          <QuestionTile
+            questions={
+              this.state.showAnswered
+                ? this.state.answered
+                : this.state.unanswered
+            }
+            answered={this.state.showAnswered}
+          />
         </div>
       </div>
     );
@@ -80,6 +69,8 @@ export class Home extends Component {
       }
     });
 
+    answered.sort((a, b) => b.timestamp - a.timestamp);
+    unanswered.sort((a, b) => b.timestamp - a.timestamp);
     this.setState({ answered, unanswered });
   };
 }

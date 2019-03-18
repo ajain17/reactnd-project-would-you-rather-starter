@@ -15,25 +15,11 @@ class UnansweredQuestion extends Component {
             <li>{ques.optionTwo.text}</li>
           </ul>
         </div>
-        <Link to={{ pathname: `/poll/${ques.id}` }}>View Poll ></Link>
+        <hr />
+        <Link to={{ pathname: `/poll/${ques.id}/false` }}>View Poll ></Link>
       </div>
     );
   }
-
-  _onChange = (ev, option) => {
-    console.log(option);
-  };
-
-  viewPoll = ev => {
-    console.log("view poll", ev.target);
-  };
 }
 
-const mapStateToProps = state => ({});
-
-const mapDispatchToProps = {};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(UnansweredQuestion);
+export default connect()(UnansweredQuestion);
