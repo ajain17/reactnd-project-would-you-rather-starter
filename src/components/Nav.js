@@ -6,6 +6,7 @@ import Home from "./Home";
 import Leaderboard from "./Leaderboard";
 import Poll from "./Poll";
 import NewQuestion from "./NewQuestion";
+import NotFound from "./NotFound";
 class Navigation extends Component {
   render() {
     return (
@@ -45,6 +46,7 @@ class Navigation extends Component {
           <Route path="/newquestion" component={NewQuestion} />
           <Route path="/leaderboard" component={Leaderboard} />
           <Route path="/question/:question/:answered" component={Poll} />
+          <Route component={NotFound} />
         </Switch>
       </React.Fragment>
     );

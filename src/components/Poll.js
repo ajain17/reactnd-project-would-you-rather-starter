@@ -46,14 +46,12 @@ class Poll extends Component {
     }
   };
 
-  getUserSelection = () => {};
-
   render() {
     let ques = this.state.question;
     return (
       <div className="poll">
         {ques !== null && (
-          <React.Fragment>
+          <div className="poll-details flex center">
             <h2>{ques.author} asks:</h2>
             <h1>Would you rather....</h1>
             <div className="choice-group">
@@ -72,22 +70,26 @@ class Poll extends Component {
                   }
                 ]}
                 onChange={this._onChange}
-                label="Would you Rather?"
               />
             </div>
-            <PrimaryButton
-              className="answer-button"
-              disabled={this.state.isDisabled}
-              text="Submit"
-              onClick={this._saveAnswer}
-            />
-          </React.Fragment>
+
+            {!this.state.isDisabled && (
+              <PrimaryButton
+                className="answer-button"
+                text="Submit"
+                onClick={this._saveAnswer}
+              />
+            )}
+          </div>
         )}
 
         {this.state.isDisabled && (
           <div>
             <hr />
-            <PollResults question={this.state.question} />
+            <PollResults
+              question={this.state.question}
+              user={this.props.authedUser}
+            />
           </div>
         )}
       </div>
@@ -110,11 +112,10 @@ class Poll extends Component {
   };
 }
 
-function mapStateToProps({ authedUser, questions, users }) {
+function mapStateToProps({ authedUser, questions }) {
   return {
     authedUser: authedUser,
-    questions: questions,
-    users: users
+    questions: questions
   };
 }
 

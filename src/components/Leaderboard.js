@@ -42,6 +42,7 @@ export class Leaderboard extends Component {
                 <th> Picture</th>
                 <th>#Questions asked</th>
                 <th>#Questions answered</th>
+                <th>Score</th>
               </tr>
               {this.state.users &&
                 this.state.users.map(user => (
@@ -52,6 +53,9 @@ export class Leaderboard extends Component {
                     </td>
                     <td> {user.questions.length}</td>
                     <td> {Object.keys(user.answers).length}</td>
+                    <td>
+                      {user.questions.length + Object.keys(user.answers).length}
+                    </td>
                   </tr>
                 ))}
             </tbody>

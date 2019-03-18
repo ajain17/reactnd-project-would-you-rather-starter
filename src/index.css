@@ -115,14 +115,10 @@ li {
   flex-flow: column;
 }
 
-.sections {
-  justify-content: center;
-  border: 1px solid black;
-}
-
 .sections h1 {
   padding: 10px;
   text-decoration: underline;
+  margin-right: 20px;
 }
 
 .question {
@@ -143,16 +139,38 @@ li {
   color: white;
 }
 
+.poll {
+  background: white;
+  border: 2px solid black;
+  width: 50%;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.poll-details .is-checked {
+  font-style: italic;
+}
+
+.choice-group {
+  align-self: center;
+}
+.poll-details {
+  text-align: center;
+  flex-direction: column;
+}
+
 .poll-results {
   background: black;
   color: white;
-  width: max-content;
-  margin-top: 30px;
+  text-align: center;
 }
 
 .poll-results h2 {
-  font-style: italic;
   text-decoration: underline;
+}
+
+.poll-results i {
+  padding: 10px;
 }
 
 .leaderboard table {
@@ -173,7 +191,12 @@ td {
   color: white;
 }
 
-img {
+.leaderboard img,
+.persona img {
   width: 50px;
   height: 50px;
+}
+
+.not-found img {
+  width: 100%;
 }

@@ -21,7 +21,7 @@ export class Home extends Component {
     let { answered, unanswered } = this.state;
     return (
       <div className="container flex center">
-        <div className="sections flex">
+        <div className="sections flex center">
           <h1
             onClick={this.showUnanswered}
             className={this.state.showUnanswered ? "active" : ""}
@@ -35,16 +35,15 @@ export class Home extends Component {
             Answered Questions
           </h1>
         </div>
-        <div className="sections section-content flex">
-          <QuestionTile
-            questions={
-              this.state.showAnswered
-                ? this.state.answered
-                : this.state.unanswered
-            }
-            answered={this.state.showAnswered}
-          />
-        </div>
+
+        <QuestionTile
+          questions={
+            this.state.showAnswered
+              ? this.state.answered
+              : this.state.unanswered
+          }
+          answered={this.state.showAnswered}
+        />
       </div>
     );
   }
@@ -75,11 +74,10 @@ export class Home extends Component {
   };
 }
 
-function mapStateToProps({ authedUser, questions, users }) {
+function mapStateToProps({ authedUser, questions }) {
   return {
     authedUser: authedUser,
-    questions: questions,
-    users: users
+    questions: questions
   };
 }
 
