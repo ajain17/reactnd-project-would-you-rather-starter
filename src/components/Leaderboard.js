@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getAllUsers } from "../actions/users";
 const deepcopy = require("deepcopy");
 export class Leaderboard extends Component {
   state = {

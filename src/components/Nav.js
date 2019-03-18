@@ -2,11 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { NavLink, Route, Switch, withRouter } from "react-router-dom";
 import { setLoggedInUser } from "../actions/authedUser";
-import Home from "./Home";
-import Leaderboard from "./Leaderboard";
-import Poll from "./Poll";
-import NewQuestion from "./NewQuestion";
-import NotFound from "./NotFound";
+
 class Navigation extends Component {
   render() {
     return (
@@ -41,13 +37,6 @@ class Navigation extends Component {
             Logout
           </p>
         </div>
-        <Switch>
-          <Route path="/home" component={Home} />
-          <Route path="/add" component={NewQuestion} />
-          <Route path="/leaderboard" component={Leaderboard} />
-          <Route path="/question/:question/:answered" component={Poll} />
-          <Route component={NotFound} />
-        </Switch>
       </React.Fragment>
     );
   }

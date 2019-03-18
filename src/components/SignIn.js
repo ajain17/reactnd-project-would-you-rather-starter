@@ -17,6 +17,13 @@ class SignIn extends Component {
     });
     return options;
   };
+  componentDidMount() {
+    console.log("mount", this.props);
+  }
+
+  componentDidUpdate() {
+    console.log("update", this.props.match);
+  }
 
   render() {
     return (
@@ -47,7 +54,6 @@ class SignIn extends Component {
     const { dispatch } = this.props;
     const { authedUser } = this.state;
     dispatch(setLoggedInUser(authedUser));
-    this.props.history.push("/home");
   };
 
   changeState = (event, item) => {

@@ -1,11 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./components/App";
-import { compose, createStore } from "redux";
 import { Provider } from "react-redux";
-import reducer from "./reducers";
+import { BrowserRouter as Router } from "react-router-dom";
+import { compose, createStore } from "redux";
+import App from "./components/App";
+import "./index.css";
 import middleware from "./middleware";
+import reducer from "./reducers";
 
 const store = createStore(
   reducer,
@@ -17,7 +18,10 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Router>
+      <App />
+    </Router>
   </Provider>,
+
   document.getElementById("root")
 );

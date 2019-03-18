@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import QuestionTile from "./QuestionTile";
-
+import { withRouter } from "react-router-dom";
 export class Home extends Component {
   state = {
     answered: null,
@@ -18,7 +18,6 @@ export class Home extends Component {
     }
   }
   render() {
-    let { answered, unanswered } = this.state;
     return (
       <div className="container flex center">
         <div className="sections flex center">
@@ -81,4 +80,4 @@ function mapStateToProps({ authedUser, questions }) {
   };
 }
 
-export default connect(mapStateToProps)(Home);
+export default withRouter(connect(mapStateToProps)(Home));

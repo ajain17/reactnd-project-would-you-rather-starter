@@ -34,7 +34,6 @@ export function handleAddQuestion(question) {
     dispatch(showLoading());
     return saveQuestion(question)
       .then(response => {
-        console.log(response);
         dispatch(addQuestion(response));
       })
       .then(() => dispatch(hideLoading()));

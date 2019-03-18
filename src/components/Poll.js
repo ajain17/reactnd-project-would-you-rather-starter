@@ -32,17 +32,19 @@ class Poll extends Component {
       : "";
 
     let question = this.props.questions.find(q => q.id === questionId);
-    if (question) {
+    if (!question) {
+      this.props.history.push("/404");
+    } else {
       this.setState({ question });
-    }
 
-    let votes = [...question.optionOne.votes, ...question.optionTwo.votes];
-    if (votes.includes(this.props.authedUser)) {
-      question.optionOne.votes.includes(this.props.authedUser)
-        ? this.setState({ defaultSelected: "optionOne" })
-        : this.setState({ defaultSelected: "optionTwo" });
+      let votes = [...question.optionOne.votes, ...question.optionTwo.votes];
+      if (votes.includes(this.props.authedUser)) {
+        question.optionOne.votes.includes(this.props.authedUser)
+          ? this.setState({ defaultSelected: "optionOne" })
+          : this.setState({ defaultSelected: "optionTwo" });
 
-      this.setState({ isDisabled: true });
+        this.setState({ isDisabled: true });
+      }
     }
   };
 
@@ -101,7 +103,6 @@ class Poll extends Component {
   };
 
   _saveAnswer = () => {
-    console.log("save", this.state.answer, this.state.question.id);
     this.props.dispatch(
       handleSaveAnswer({
         authedUser: this.props.authedUser,
