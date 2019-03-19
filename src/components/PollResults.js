@@ -18,7 +18,7 @@ const PollResults = props => {
             <h2>
               {ques.optionOne.text}
               {ques.optionOne.votes.includes(user) && (
-                <i class="fas fa-check-circle" />
+                <i className="fas fa-check-circle" />
               )}
             </h2>
             <p>

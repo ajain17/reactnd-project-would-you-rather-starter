@@ -24,7 +24,7 @@ class Dashboard extends Component {
           <Route path="/add" component={NewQuestion} />
           <Route path="/leaderboard" component={Leaderboard} />
           <Route path="/question/:question" component={Poll} />
-          <Route exact path="/404" component={NotFound} />
+          <Route component={NotFound} />
         </Switch>
       </React.Fragment>
     );

@@ -197,13 +197,10 @@ td {
   width: 50%;
   padding: 10px;
   border: 2px solid black;
-  background: darkslateblue;
 }
 
-.new-question-form label,
 .question a,
-.login label,
-.new-question-form {
+.login label {
   color: white;
 }
 

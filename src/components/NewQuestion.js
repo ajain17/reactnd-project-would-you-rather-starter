@@ -17,7 +17,7 @@ class NewQuestion extends Component {
           <h2> Would you rather... </h2>
           <TextField
             name="optionOne"
-            label="Enter option 1"
+            label="Enter option 1 (required)"
             multiline
             rows={2}
             required={true}
@@ -25,7 +25,7 @@ class NewQuestion extends Component {
           />
           <TextField
             name="optionTwo"
-            label="Enter option 2"
+            label="Enter option 2 (required)"
             multiline
             rows={2}
             required={true}
